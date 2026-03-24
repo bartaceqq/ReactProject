@@ -266,7 +266,7 @@ function CountryFlagValidator({ passwordData, onValidationChange }: CountryFlagV
   const [selectedCountry] = useState(getRandomCountry)
   const [hasImageError, setHasImageError] = useState(false)
 
-  const flagUrl = `https://flagsapi.com/${selectedCountry}/flat/64.png`
+  const flagUrl = `https://countryflagsapi.netlify.app/flag/${selectedCountry}.svg`
 
   const result = useMemo<CountryFlagValidation>(() => {
     const normalizedPassword = passwordData.value.toUpperCase()
