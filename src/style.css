@@ -1,0 +1,221 @@
+:root {
+  --primary-color: #3498db;
+  --bg: #f4f6fb;
+  --surface: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: #d1d5db;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #60a5fa;
+    --bg: #0f172a;
+    --surface: #111827;
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+    --border: #374151;
+    --success: #4ade80;
+    --warning: #fbbf24;
+    --danger: #f87171;
+  }
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+#app {
+  min-height: 100vh;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 1.25rem;
+  padding: 1.5rem;
+}
+
+.password-input,
+.strength-card,
+.validator-card,
+.card {
+  width: min(540px, 100%);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.password-input label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.input-row {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.input-row .form-control {
+  border-color: var(--border);
+  color: var(--text);
+  background: var(--surface);
+}
+
+.input-row .form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--primary-color) 25%, transparent);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: color-mix(in srgb, var(--primary-color) 85%, black);
+  border-color: color-mix(in srgb, var(--primary-color) 85%, black);
+}
+
+.validator-card h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.validator-card p {
+  margin: 0;
+}
+
+.flag-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.flag-instruction {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.flag-preview,
+.flag-fallback {
+  flex-shrink: 0;
+  width: 64px;
+  height: 48px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--border) 25%, var(--surface));
+}
+
+.flag-preview {
+  object-fit: cover;
+}
+
+.flag-fallback {
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.strength-text {
+  margin: 0 0 0.75rem;
+}
+
+.strength-bar {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--border) 80%, transparent);
+  overflow: hidden;
+}
+
+.strength-fill {
+  height: 100%;
+  transition: width 0.25s ease;
+}
+
+.strength-fill.weak {
+  background: var(--danger);
+}
+
+.strength-fill.medium {
+  background: var(--primary-color);
+}
+
+.strength-fill.strong {
+  background: var(--success);
+}
+
+.warning,
+.success {
+  margin: 0.75rem 0;
+  font-size: 0.95rem;
+}
+
+.warning {
+  color: var(--warning);
+}
+
+.success {
+  color: var(--success);
+}
+
+.criteria-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.criteria-list li {
+  padding: 0.45rem 0.55rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.criteria-list li.passed {
+  background: color-mix(in srgb, var(--success) 15%, var(--surface));
+  color: var(--success);
+}
+
+.criteria-list li.failed {
+  background: color-mix(in srgb, var(--danger) 15%, var(--surface));
+  color: var(--danger);
+}
+
+@media (max-width: 520px) {
+  .app {
+    justify-content: flex-start;
+    padding-top: 2rem;
+  }
+
+  .input-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .flag-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
